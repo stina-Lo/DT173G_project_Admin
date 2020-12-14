@@ -22,7 +22,7 @@ const deleteCourse = (uni, name) => {
         course_name: name,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_courses.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_courses.php', {
         method: 'DELETE',
         body: JSON.stringify(data)
     })
@@ -50,7 +50,7 @@ const deleteXp = (workplace, position) => {
         position: position,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_xp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_xp.php', {
         method: 'DELETE',
         body: JSON.stringify(data)
     })
@@ -77,7 +77,7 @@ const deleteWp = (title, url) => {
         url: url,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_wp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_wp.php', {
         method: 'DELETE',
         body: JSON.stringify(data)
     })
@@ -106,7 +106,7 @@ const updateXp = () => {
         new_end_date: x.elements[5].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_xp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_xp.php', {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -138,7 +138,7 @@ const updateWp = () => {
         new_description: x.elements[4].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_wp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_wp.php', {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -169,7 +169,7 @@ const addXp = () => {
         end_date: x.elements[3].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_xp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_xp.php', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -199,7 +199,7 @@ const addWp = () => {
         description: x.elements[2].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_wp.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_wp.php', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -232,7 +232,7 @@ const updateCourse = () => {
         new_end_date: x.elements[5].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_courses.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_courses.php', {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -263,7 +263,7 @@ const addCourse = () => {
         end_date: x.elements[3].value,
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_courses.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_courses.php', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -289,7 +289,7 @@ const getWp = () => {
     const headerEl = document.getElementById("adminHeader");
     const wpEl = document.createElement("DIV")
     wpEl.innerHTML = ''; /*empty value*/
-    fetch('http://localhost:8080/DT173G_project/API/rest_wp.php') /*make fetch*/
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_wp.php') /*make fetch*/
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -324,7 +324,7 @@ const getXp = () => {
     const headerEl = document.getElementById("adminHeader");
     const xpEl = document.createElement("DIV")
     xpEl.innerHTML = ''; /*empty value*/
-    fetch('http://localhost:8080/DT173G_project/API/rest_xp.php') /*make fetch*/
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_xp.php') /*make fetch*/
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -359,7 +359,7 @@ const getCourses = () => {
     const headerEl = document.getElementById("adminHeader");
     const coursesEl = document.createElement("DIV")
     coursesEl.innerHTML = ''; /*empty value*/
-    fetch('http://localhost:8080/DT173G_project/API/rest_courses.php') /*make fetch*/
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_courses.php') /*make fetch*/
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -394,7 +394,7 @@ const showAdmin = () => {
     const data = {
         email: "cristina.lofqvist@gmail.com"
     }
-    fetch('http://localhost:8080/DT173G_project/API/rest_authorized.php', {
+    fetch('https://willbur.nu/DT173G_PROJECT/API/rest_authorized.php', {
         method: 'POST',
         body: JSON.stringify(data)
     }) /*make fetch*/
@@ -506,7 +506,7 @@ const login = () => {
             email: "cristina.lofqvist@gmail.com",
             password: password
         }
-        fetch('http://localhost:8080/DT173G_project/API/rest_login.php', {
+        fetch('https://willbur.nu/DT173G_PROJECT/API/rest_login.php', {
             method: 'POST',
             body: JSON.stringify(data)
         }) /*make fetch*/
