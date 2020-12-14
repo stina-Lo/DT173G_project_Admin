@@ -5,7 +5,7 @@ const showLogin = () => {
     mainEl.innerHTML = '<form id="adminPass"  onSubmit = "login()">' +
         '<label> Lösen : </label >' +
         '<input type="password" placeholder="Lösen" name="password" required>' +
-        '<button type="submit">Login</button>' +
+        '<button onclick = "login()" type="button">Login</button>' +
         '</form>'
 }
 /**
@@ -24,16 +24,25 @@ const deleteCourse = (uni, name) => {
     }
     fetch('https://willbur.nu/DT173G_PROJECT/API/rest_courses.php', {
         method: 'DELETE',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
     })
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+            location.reload
+        })
+
         .then(data => {
+
+            location.reload();
+
 
         })
         .catch(error => {
             console.log('Error: ', error);
         })
-    location.reload();
 }
 
 /**
@@ -52,15 +61,21 @@ const deleteXp = (workplace, position) => {
     }
     fetch('https://willbur.nu/DT173G_PROJECT/API/rest_xp.php', {
         method: 'DELETE',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
     })
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+            location.reload
+        })
         .then(data => {
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
         })
-    location.reload();
 
 }
 /**
@@ -79,15 +94,21 @@ const deleteWp = (title, url) => {
     }
     fetch('https://willbur.nu/DT173G_PROJECT/API/rest_wp.php', {
         method: 'DELETE',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
     })
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+            location.reload
+        })
         .then(data => {
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
         })
-    location.reload();
 
 }
 /**
@@ -149,6 +170,7 @@ const updateWp = () => {
         .then(data => {
             console.log(data)
             //getCourses();
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
@@ -180,6 +202,7 @@ const addXp = () => {
         .then(data => {
             console.log(data)
             //getCourses();
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
@@ -210,6 +233,7 @@ const addWp = () => {
         .then(data => {
             console.log(data)
             //getCourses();
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
@@ -243,6 +267,7 @@ const updateCourse = () => {
         .then(data => {
             console.log(data)
             //getCourses();
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
@@ -274,6 +299,7 @@ const addCourse = () => {
         .then(data => {
             console.log(data)
             //getCourses();
+            location.reload();
         })
         .catch(error => {
             console.log('Error: ', error);
@@ -391,22 +417,28 @@ const getCourses = () => {
  * makes fetch call to rest_authoruzed.php
  */
 const showAdmin = () => {
+    const headerEl = document.getElementById("adminHeader");
+    headerEl.innerHTML = "";
+    getCourses();
+    getWp();
+    getXp();
     const data = {
         email: "cristina.lofqvist@gmail.com"
     }
     fetch('https://willbur.nu/DT173G_PROJECT/API/rest_authorized.php', {
         method: 'POST',
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
     }) /*make fetch*/
         .then(response => {
             if (!response.ok) {
                 showLogin();
             } else {
-
-
                 const mainEl = document.getElementById("adminMain");
                 mainEl.innerHTML = "";
-                mainEl.innerHTML = '<form id="courseAdd" onSubmit = "addCourse()">' +
+                mainEl.innerHTML = '<form id="courseAdd" >' +
                     '<label for="kursname">Kursnamn:</label>' +
                     '<input type="text" name="kursnamn" id="kursnamn">' +
                     '<label for="university">Universitet:</label>' +
@@ -415,9 +447,9 @@ const showAdmin = () => {
                     '<input type="date" name="start_date" id="sdate">' +
                     '<label for="end_date">Slutdatum:</label>' +
                     '<input type="date" name="end_date" id="edate">' +
-                    '<button type="submit">Lägg till kurs</button>' +
+                    '<button onclick = "addCourse()">Lägg till kurs</button>' +
                     '</form>' + "<hr/>" +
-                    '<form id="xpAdd"  onSubmit = "addXp()">' +
+                    '<form id="xpAdd"  >' +
                     '<label for="workplace">Workplace:</label>' +
                     '<input type="text" name="workplace" id="workplace">' +
                     '<label for="title">Title:</label>' +
@@ -426,18 +458,18 @@ const showAdmin = () => {
                     '<input type="date" name="start_date" id="sdate">' +
                     '<label for="end_date">Slutdatum:</label>' +
                     '<input type="date" name="end_date" id="edate">' +
-                    '<button type="submit">Lägg till erfarenhet</button>' +
+                    '<button onclick = "addXp()">Lägg till erfarenhet</button>' +
                     '</form>' + "<hr/>" +
-                    '<form  id="wpAdd"  onSubmit = "addWp()">' +
+                    '<form  id="wpAdd"  >' +
                     '<label for="title">Title:</label>' +
                     '<input type="text" name="title" id="wpTitle">' +
                     '<label for="url">Url:</label>' +
                     '<input type="url" name="url" id="url">' +
                     '<label for="desc">Description:</label>' +
                     '<input type="text" name="desc" id="desc">' +
-                    '<button type="submit">Lägg till webpage</button>' +
+                    '<button onclick = "addWp()">Lägg till webpage</button>' +
                     '</form>' + "<hr/>" +
-                    '<form  id="courseupdate"  onSubmit = "updateCourse()">' +
+                    '<form  id="courseupdate"  >' +
                     '<label for="kursname">Kursnamn:</label>' +
                     '<input type="text" name="kursnamn" id="kursnamn">' +
                     '<label for="university">Universitet:</label>' +
@@ -450,9 +482,9 @@ const showAdmin = () => {
                     '<input type="date" name="start_date" id="sdate">' +
                     '<label for="end_date">nytt Slutdatum:</label>' +
                     '<input type="date" name="end_date" id="edate">' +
-                    '<button type="submit">Updatera</button>' +
+                    '<button onclick = "updateCourse()">Updatera</button>' +
                     '</form>' + "<hr/>" +
-                    '<form  id="xpupdate"  onSubmit = "updateXp()">' +
+                    '<form  id="xpupdate"  >' +
                     '<label for="workplace">Workplace:</label>' +
                     '<input type="text" name="workplace" id="workplace">' +
                     '<label for="title">Title:</label>' +
@@ -465,9 +497,9 @@ const showAdmin = () => {
                     '<input type="date" name="start_date" id="sdate">' +
                     '<label for="end_date">nytt Slutdatum:</label>' +
                     '<input type="date" name="end_date" id="edate">' +
-                    '<button type="submit">Updatera</button>' +
+                    '<button onclick = "updateXp()">Updatera</button>' +
                     '</form>' + "<hr/>" +
-                    '<form  id="wpupdate"  onSubmit = "updateWp()">' +
+                    '<form  id="wpupdate"  >' +
                     '<label for="title">Title:</label>' +
                     '<input type="text" name="title" id="wpTitle">' +
                     '<label for="url">Url:</label>' +
@@ -478,20 +510,14 @@ const showAdmin = () => {
                     '<input type="url" name="url" id="url">' +
                     '<label for="desc">ny Description:</label>' +
                     '<input type="text" name="desc" id="desc">' +
-                    '<button type="submit">updatera</button>' +
+                    '<button onclick = "updateWp()">updatera</button>' +
                     '</form>'
-
-                return response.json();
             }
         }).then((data) => {
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
-    getCourses();
-    getWp();
-    getXp();
-
 }
 
 /**
@@ -501,6 +527,7 @@ const showAdmin = () => {
 const login = () => {
     const x = document.getElementById("adminPass");
     const password = x.elements[0].value
+
     if (password) {
         const data = {
             email: "cristina.lofqvist@gmail.com",
@@ -508,7 +535,10 @@ const login = () => {
         }
         fetch('https://willbur.nu/DT173G_PROJECT/API/rest_login.php', {
             method: 'POST',
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
         }) /*make fetch*/
             .then(response => {
                 if (!response.ok) {
