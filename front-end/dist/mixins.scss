@@ -1,0 +1,50 @@
+@mixin display-grid {
+    display: -ms-grid;
+    display: grid;
+}
+@mixin grid-all-columns {
+    grid-column: 1 /  13;
+}
+@mixin flex {
+    display: flex;
+}
+@mixin flex-column {
+    @include flex;
+    flex-direction: column;
+}
+/*flex grid mixin*/
+@mixin basic-styles {
+    @include flex-column;
+    align-items: center;
+}
+
+@mixin standard-img-template {
+    max-width: 100%;
+    height: auto;
+}
+
+@mixin width-100 {
+    width:100%;
+}
+
+@mixin flex-row {
+    @include flex;
+    flex-direction: row;
+}
+@mixin flex-row-align-i-center {
+    @include flex-row;
+    align-items: center;
+}
+@mixin transition-ease-out {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+@mixin space-evenly {
+    @include flex;
+    justify-content: space-evenly;
+}
+
+
+

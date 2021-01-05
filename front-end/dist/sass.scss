@@ -1,0 +1,690 @@
+@import 'mixins';
+
+$primary-color: #f1d5c0;
+$footer-color: #cd8d5c;
+$header-color: linear-gradient(to right, #27423D, #090F0E);
+
+$fontI: 'Poppins',
+sans-serif;
+
+$fontII: 'Alice',
+serif;
+
+html {
+    @include width-100;
+}
+
+body {
+    @include display-grid;
+    height: 100%;
+    @include width-100;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+header {
+    @include flex-column;
+    @include grid-all-columns;
+    justify-content: center;
+    grid-row: 1 / 6;
+    @include width-100;
+    background: $header-color;
+    color: white;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    text-align: center;
+    z-index: 1001;
+    top: 0;
+}
+
+#mainHeader,
+#mainMain,
+#mainFooter,
+#mainHeaderPortfolio,
+#mainMainPortfolio,
+#mainFooterPortfolio,
+#mainHeaderIllustration,
+#mainMainIllustration,
+#mainFooterIllustration,
+#mainHeaderCourses,
+#mainMainCourses,
+#mainHeaderXp,
+#mainMainXp,
+#mainMainWp,
+#mainFooterCourses {
+    @include width-100;
+}
+
+#mainMainPortfolio {
+    @include basic-styles;
+    justify-content: space-evenly;
+}
+
+#mainMainXp {
+    @include basic-styles;
+    justify-content: space-evenly;
+}
+
+#mainHeader {
+    @include flex-column;
+}
+
+/*inheritance*/
+main {
+    @include grid-all-columns;
+    margin-top: 150px;
+    @include basic-styles;
+    grid-row: 6 / 9;
+    min-height: 100vh;
+    margin-bottom: 150px;
+}
+
+
+#mainFooter {
+    padding-bottom: 20px;
+}
+
+#typewriter {
+    @include flex-column;
+    align-items: flex-start;
+
+    div {
+        margin-top: -50px;
+    }
+
+    img {
+        z-index: 1000;
+        max-width: 600px;
+        max-height: 400px;
+        @include width-100;
+        height: auto;
+
+    }
+}
+
+.black {
+    color: black;
+}
+
+footer {
+    @include basic-styles;
+    @include flex-row;
+    @include grid-all-columns;
+    @include space-evenly;
+    grid-row: 9 / 13;
+    bottom: 0;
+    background-color: whitesmoke;
+}
+
+h1,
+h2,
+a {
+    font-family: $fontII;
+}
+
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+    font-family: $fontI;
+}
+
+a {
+    text-decoration: none;
+}
+
+#educationLink {
+    color: white;
+}
+
+.educationPlate {
+    width: 20em;
+    height: 12em;
+    background-color: #F66154;
+    text-align: center;
+    @include flex;
+    justify-content: center;
+    opacity: 1;
+    transition: 0.3s;
+
+    a {
+        @include basic-styles;
+        justify-content: center;
+        font-family: $fontI;
+        font-size: 150%;
+        font-weight: bold;
+    }
+}
+
+.educationPlate:hover {
+    opacity: 0.5;
+}
+
+#more {
+    @include flex-row;
+    @include width-100;
+    margin-top: 20%;
+}
+
+#more h1,
+#verticalLine {
+    padding: 5%;
+}
+
+#verticalLine {
+    border-left: 2px solid;
+    height: 100px;
+}
+
+.backgroundimg {
+    background-repeat: no-repeat;
+    @include width-100;
+    min-height: 2880px;
+    height: auto;
+    @include flex-column;
+    background-image: url("../images/filip-zrnzevic-QsWG0kjPQRY-large.png");
+}
+
+#skillsAbout {
+    @include flex-row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 20%;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+#portfolioSpan {
+    @include width-100;
+    @include flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+
+
+#base {
+    @include width-100;
+    @include flex-row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#Scetch {
+    max-height: 500px;
+    @include standard-img-template
+}
+
+#typewriterImg {
+    max-height: 375px;
+    @include standard-img-template
+}
+
+span:hover {
+    cursor: pointer;
+}
+
+#illustrationSpan {
+    @include width-100;
+}
+
+.portfolioPlate,
+.illustrationPlate {
+    display: inline-block;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    max-width: 100%;
+    background-color: black;
+    color: white;
+    font-family: $fontI;
+    font-size: 150%;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.illustrationPlate {
+    padding-right: 1%;
+    padding-left: 20%;
+}
+
+.portfolioPlate {
+    padding-right: 20%;
+    padding-left: 1%;
+}
+
+.portfolioPlate:hover,
+.illustrationPlate:hover {
+    opacity: 0.5;
+}
+
+/*.portfolioPlate {
+    text-align: left;
+    h2 {
+    margin-left: 1em;
+    margin-top: 1em;
+    font-family:$fontI;
+    }
+}
+.illustrationPlate {
+    text-align: right;
+    h2 {
+    margin-right: 1em;
+    margin-top: 1em;
+    font-family:$fontI;
+    }
+}*/
+.upperMiddelPart {
+    padding: 3em;
+    @include flex-row;
+    justify-content: space-around;
+    @include width-100;
+}
+
+.upperMiddelPart h1 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.upperMiddelPart p {
+    max-width: 300px;
+
+}
+
+.lowerMiddelPart {
+    padding: 3em;
+    @include width-100;
+    @include flex-row;
+}
+
+#white {
+    color: white;
+}
+
+p {
+    max-width: 400px;
+    line-height: 150%;
+}
+
+#aboutDiv {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+}
+
+.picoverpic {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include width-100;
+    max-width: 600px;
+    height: 255px;
+}
+
+.transition {
+    position: relative;
+    margin: 0 auto;
+    width: 600px;
+    height: 255px;
+}
+
+
+
+.transitionimg {
+    position: absolute;
+    left: 0;
+    //padding: 2%;
+    @include transition-ease-out;
+}
+
+.transition img {
+    padding: 2%;
+    @extend .transitionimg;
+}
+
+.contactTop {
+    opacity: 1;
+}
+
+.transitionimg.contactTop:hover {
+    opacity: 0;
+}
+
+
+.leafimg img {
+    @include transition-ease-out;
+}
+
+.leafimg:hover {
+    opacity: 0;
+}
+
+.contactTop,
+.contactBottom {
+    max-height: 804px;
+    @include standard-img-template
+}
+
+
+
+#white {
+    padding: 3%;
+}
+
+.blackBottom {
+    background-color: black;
+    color: white;
+    @include flex-row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+#aboutDiv ul {
+    line-height: 200%;
+}
+
+#aboutDiv h1 {
+    text-align: center;
+}
+
+#contactDiv {
+    @include basic-styles;
+    background-color: #815832;
+    justify-content: center;
+    /*margin: 5em;*/
+}
+
+#portrait {
+    max-width: 300px;
+    max-height: 300px;
+    @include width-100;
+    height: auto;
+}
+
+#fronEndFooter {
+    padding: 3%;
+}
+
+.breadcrumb ul {
+    padding: 10px 16px;
+    list-style: none;
+}
+
+/*Display list items side by side*/
+.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #090F0E;
+    text-decoration: none;
+}
+
+/*Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #aed6cf;
+    text-decoration: underline;
+}
+
+.flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+    @include width-100;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+    @include width-100;
+}
+
+#mainMainIllustration {
+    padding-top: 20px;
+
+    @include basic-styles;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: black;
+    @include width-100;
+
+}
+
+#whiteBackground,
+#whiteBackground h3 {
+    background-color: whitesmoke;
+    color: white;
+}
+
+#firstIllustrationArticle {
+    padding-top: 5em;
+
+}
+
+.illustrationArticle {
+    color: white;
+    position: relative;
+    max-width: 650px;
+    height: auto;
+    @include flex-row-align-i-center;
+    margin-bottom: 50px;
+    justify-content: space-evenly;
+    padding: 3em;
+
+    .flexWrapperCol {
+        @include flex-column;
+        align-items: start;
+
+    }
+
+    img {
+        @include width-100;
+        max-height: 350px;
+        width: auto;
+    }
+
+
+    h3 {
+        font-family: $fontII;
+        font-size: 250%;
+        padding: 2em;
+    }
+}
+
+.vl {
+    border-left: 2px solid white;
+    height: 50px;
+}
+
+.infoDrop {
+    @include flex-row;
+}
+
+.vlInfo {
+    @include basic-styles;
+    justify-content: flex-end;
+    @include transition-ease-out;
+    opacity: 1;
+
+    p {
+        width: fit-content;
+        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+    }
+}
+
+.vlInfo:hover+.hide {
+    opacity: 1
+}
+
+.vlInfo:hover {
+    opacity: 0;
+}
+
+.hide {
+    @include transition-ease-out;
+    opacity: 0;
+}
+
+.kurser {
+    @include basic-styles;
+    @include width-100;
+    height: auto;
+
+    table {
+        margin: 10px;
+        max-width: 600px;
+        max-height: 600px;
+        @include width-100;
+        height: auto;
+    }
+
+    thead {
+
+        td {
+            font-family: $fontI;
+            background-color: #F8EBF2;
+            color: #F66154;
+            font-weight: bolder;
+        }
+    }
+
+    tr {
+        border-bottom: 2px black;
+    }
+
+    td {
+        background-color: whitesmoke;
+        font-family: $fontII;
+    }
+}
+
+.filter {
+    border-radius: 25px;
+    max-width: 300px;
+    padding: 1%;
+}
+
+form {
+    padding: 10%;
+    background-color: #F8EBF2;
+    color: #F66154;
+    font-family: $fontI;
+
+    label {
+        border-radius: 25px;
+    }
+}
+
+.kurser h1,
+h2,
+h3 {
+    color: white;
+}
+
+#brown {
+    background-color: #815832;
+}
+
+.leafimg {
+    max-height: 250px;
+    height: auto;
+}
+
+#mainMainCourses {
+    @include basic-styles;
+    justify-content: space-evenly;
+}
+
+.socialmediaicon {
+    width: 25px;
+    height: 25px;
+}
+
+/*mobile screens*/
+
+@media only screen and (max-width:500px) {
+    .hideOnsmall {
+        display: none;
+    }
+
+    #more h1,
+    #skills h1 {
+        font-size: 200%;
+    }
+
+    p,
+    li {
+        font-size: 80%;
+    }
+
+    td {
+        font-size: 65%;
+        padding: 0px;
+
+    }
+
+
+    .illustrationArticle h3 {
+        font-size: 90%;
+    }
+
+    .illustrationArticle img {
+        max-height: 150px;
+        width: auto;
+    }
+
+    #skillsAbout {
+        margin: 20px;
+    }
+
+    .ghost {
+        display: none;
+    }
+}
+
+
+
+/*
+/*tablet screen size*/
+/*@media only screen and (min-width: 501px) and (max-width:799px) {}*/
+
+/*Large screens*/
+
+@media only screen and (min-width: 800px) {
+
+    #more h1,
+    #skills h1 {
+        font-size: 300%;
+    }
+
+    #skills p {
+        font-size: 120%;
+        font-weight: 500;
+    }
+
+    td {
+        padding: 20px;
+    }
+
+}
